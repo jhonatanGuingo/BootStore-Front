@@ -5,7 +5,7 @@ export const ContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [token, setToken] = useState("");
   const [name, setName] = useState("");
-  
+  const [peripheral, setPeripheral] = useState([]);
 
   return (
     <Context.Provider
@@ -16,6 +16,8 @@ export const ContextProvider = ({ children }) => {
         setToken,
         name,
         setName,
+        peripheral,
+        setPeripheral
       }}
     >
       {children}

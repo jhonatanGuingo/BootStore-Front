@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUpPage from "./pages/SignUpPage";
 import SignInPage from "./pages/SignInPage";
-import UserProvider from "./contexts/userContext";
+import UserProvider from "./contexts/UserContext";
+import HomePage from "./pages/HomePage"
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/signUp" element={<SignUpPage />} />
           <Route path="/signIn" element={<SignInPage />} />
+          <Route path="/home" element={<HomePage />} />
         </Routes>
       </UserProvider>
     </BrowserRouter>
@@ -17,3 +19,4 @@ function App() {
 }
 
 export default App;
+

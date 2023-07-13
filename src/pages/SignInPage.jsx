@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import axios from "axios";
 import React from "react";
-import { UserContext } from "../contexts/userContext";
+import { UserContext } from "../contexts/UserContext";
 
 axios.defaults.baseURL = `${import.meta.env.VITE_API_URL}`;
 

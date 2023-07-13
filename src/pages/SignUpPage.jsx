@@ -95,7 +95,7 @@ export default function SignUpPage() {
         </button>
       </form>
 
-      <Link to = {`/`}>
+      <Link to = {`/signIn`}>
         Já tem uma conta? Entre agora!
       </Link>
     </SignUpContainer>

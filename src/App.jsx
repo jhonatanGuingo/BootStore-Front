@@ -1,8 +1,7 @@
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUpPage from "./pages/SignUpPage";
 import SignInPage from "./pages/SignInPage";
-import UserProvider from "./contexts/userContext";
+import UserProvider from "./contexts/UserContext";
 import HomePage from "./pages/HomePage"
 
 function App() {

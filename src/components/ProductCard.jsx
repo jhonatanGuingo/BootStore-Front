@@ -1,61 +1,10 @@
 import styled from "styled-components"
 
-export default function ProductCard(){
-    const data = [
-        {
-            _id: 0,
-            company: "empresa",
-            title: "titulo",
-            price: 100
-        },
-        {
-            _id: 0,
-            company: "empresa",
-            title: "titulo",
-            price: 100
-        },
-        {
-            _id: 0,
-            company: "empresa",
-            title: "titulo",
-            price: 100
-        },
-        {
-            _id: 0,
-            company: "empresa",
-            title: "titulo",
-            price: 100
-        },
-        {
-            _id: 0,
-            company: "empresa",
-            title: "titulo",
-            price: 100
-        },
-        {
-            _id: 0,
-            company: "empresa",
-            title: "titulo",
-            price: 100
-        },
-        {
-            _id: 0,
-            company: "empresa",
-            title: "titulo",
-            price: 100
-        },
-        {
-            _id: 0,
-            company: "empresa",
-            title: "titulo",
-            price: 100
-        }
-    ]
-
+export default function ProductCard({products}){
     return(<>{
-        data.map((product, id) => (
+        products.map((product, id) => (
         <ProductCardSC key={id}>
-            <img src="https://images.kabum.com.br/produtos/fotos/147962/headset-gamer-hyperx-cloud-blue-ps4-hhsc2-fa-bl-n_1613658279_gg.jpg" 
+            <img src={product.image} 
             alt="product"/>
             <div>
                 <h2>{product.company}</h2>
@@ -72,7 +21,7 @@ export default function ProductCard(){
 }
 
 const ProductCardSC = styled.div`
-
+    padding-top: 20px;
     margin-bottom: 30px;
     width: 300px;
     display: flex;
@@ -105,7 +54,7 @@ const ProductCardSC = styled.div`
         span{
             font-family: Bebas Neue;
             margin-bottom: 20px;
-            color:  #ff002b;
+            color: #ff274b;
             font-size: 22px;
         }
     }

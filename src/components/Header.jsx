@@ -5,7 +5,6 @@ import { BiExit } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
 import { FiShoppingCart } from "react-icons/fi";
 import { BsChevronDown } from "react-icons/bs";
-import img from "../../public/header.jpg";
 
 export default function Header() {
   const location = useLocation();
@@ -67,9 +66,6 @@ export default function Header() {
           <p><BiExit /></p>
         </div>
       </HeaderSC>
-      <SCimg>
-        <img src={img} alt="header" />
-      </SCimg>
     </>
   );
 }
@@ -123,15 +119,5 @@ const HeaderSC = styled.header`
         color: #a5a5a5;
       }
     }
-  }
-`;
-
-const SCimg = styled.div`
-  img {
-    margin-top: 101px;
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    image-rendering: crisp-edges;
   }
 `;

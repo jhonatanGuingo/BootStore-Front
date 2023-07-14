@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import ProductCard from "./ProductCard";
 
-export default function Products() {
+export default function Products({products}) {
     return(
         <ProductsContainer>
-            <ProductCard/>
+            <ProductCard products={products}/>
         </ProductsContainer>
     )
 }

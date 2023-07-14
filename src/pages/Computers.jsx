@@ -1,14 +1,14 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Products from "../components/Products";
-import { peripherals } from "../data/products";
+import { computers } from "../data/products";
 
-export default function Peripherals() {
+export default function Computers() {
+    console.log("a")
     return(<>
             <Header/>
-            <Products products={peripherals}/>
+            <Products products={computers}/>
             <Footer/>
         </>
     )
 }
-

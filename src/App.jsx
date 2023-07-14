@@ -3,6 +3,10 @@ import SignUpPage from "./pages/SignUpPage";
 import SignInPage from "./pages/SignInPage";
 import UserProvider from "./contexts/UserContext";
 import Peripherals from "./pages/Peripherals"
+import Games from "./pages/Games";
+import Hardware from "./pages/Hardware";
+import Computers from "./pages/Computers";
+import Cellphones from "./pages/Cellphones";
 
 function App() {
   return (
@@ -11,7 +15,11 @@ function App() {
         <Routes>
           <Route path="/signUp" element={<SignUpPage />} />
           <Route path="/signIn" element={<SignInPage />} />
-          <Route path="/perifericos" element={<Peripherals />} />
+          <Route path="/categoria/perifericos" element={<Peripherals />}/>
+          <Route path="/categoria/games" element={<Games />}/>
+          <Route path="/categoria/hardware" element={< Hardware/>}/>
+          <Route path="/categoria/computadores" element={<Computers />}/>
+          <Route path="/categoria/celulares" element={<Cellphones />}/>
         </Routes>
       </UserProvider>
     </BrowserRouter>

@@ -18,36 +18,36 @@ export default function Header() {
     <HeaderSC>
       <h1>KATCHAU</h1>
       <span>
-        <p
+        <h3
           className={selectedItem === "peripherals" ? "selected" : ""}
           onClick={() => handleItemClick("peripherals")}
         >
-          PERIFÉRICOS <h3><BsChevronDown /></h3>
-        </p>
-        <p
+          PERIFÉRICOS <p><BsChevronDown /></p>
+        </h3>
+        <h3
           className={selectedItem === "games" ? "selected" : ""}
           onClick={() => handleItemClick("games")}
         >
-          GAMES <h3><BsChevronDown /></h3>
-        </p>
-        <p
+          GAMES <p><BsChevronDown /></p>
+        </h3>
+        <h3
           className={selectedItem === "hardware" ? "selected" : ""}
           onClick={() => handleItemClick("hardware")}
         >
-          HARDWARE <h3><BsChevronDown /></h3>
-        </p>
-        <p
+          HARDWARE <p><BsChevronDown /></p>
+        </h3>
+        <h3
           className={selectedItem === "computers" ? "selected" : ""}
           onClick={() => handleItemClick("computers")}
         >
-          COMPUTADORES <h3><BsChevronDown /></h3>
-        </p>
-        <p
+          COMPUTADORES <p><BsChevronDown /></p>
+        </h3>
+        <h3
           className={selectedItem === "cellphones" ? "selected" : ""}
           onClick={() => handleItemClick("cellphones")}
         >
-          CELULAR & SMARTPHONE <h3><BsChevronDown /></h3>
-        </p>
+          CELULAR & SMARTPHONE <p><BsChevronDown /></p>
+        </h3>
       </span>
       <div>
         <p><FiShoppingCart /></p>
@@ -63,51 +63,60 @@ export default function Header() {
 }
 
 const HeaderSC = styled.header`
+  position: fixed;
+  background-color: white;
+  left: 0px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 39px;
   font-family: Bebas Neue;
-  padding: 36px 250px 36px 250px;
+  width: 100%;
+  height: 100px;
   border-bottom: 1px solid lightgrey;
+  h1{
+    margin-left: 300px;
+  }
   span{
     display: flex;
     font-family: Roboto;
     font-weight: 700;
-    p{
+    h3{
         display: flex;
         font-size: 14px;
-        margin: 0px 40px;
+        margin: 0px 30px;
         cursor: pointer;
         &:hover{
             color: #a5a5a5;
         }
-        h3{
+        p{
             font-size: 13px;
             margin-left: 7px;
             margin-top: 1px;
         }
         &.selected {
-        color: #ff002b;
+        color: #ff274b;
+      }
     }
   }
-}
   div{
     display: flex;
     justify-content: space-between;
     width: 150px;
     font-size: 25px;
+    margin-right: 300px;
     p{
         cursor: pointer;
         &:hover{
             color: #a5a5a5;
         }
     }
-  }
+  } 
 `
 
 const SCimg = styled.div`
     img{
+        margin-top: 101px;
         width: 100%;
         height: 220px;
         object-fit: cover;

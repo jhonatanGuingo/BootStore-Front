@@ -4,8 +4,7 @@ import { CiCircleRemove } from "react-icons/ci"
 import { Link } from "react-router-dom"
 
 function Cart() {
-
-
+    
 
     return (
         <>
@@ -29,7 +28,9 @@ function Cart() {
                             <h3>Desconto</h3>
                             <p>Após terminar clicke em "submit"</p>
                             <div>
-                                <input type="text" placeholder="Cupom"/>
+                                <input 
+                                    type="text" placeholder="Cupom"
+                                />
                                 <button className="discount-button">Enviar</button>
                             </div>
                         </Discount>

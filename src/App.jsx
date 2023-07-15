@@ -10,7 +10,6 @@ import Computers from "./pages/Computers";
 import Cellphones from "./pages/Cellphones";
 import { StoreProvider } from "./contexts/StoreContext";
 
-
 function App() {
   return (
     <BrowserRouter>

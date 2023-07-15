@@ -1,14 +1,13 @@
 import styled from "styled-components"
-//import { useState, useContext } from "react"
-//import { StoreContext } from "../contexts/StoreContext";
+import { useState, useContext } from "react"
+import { StoreContext } from "../contexts/StoreContext";
 
 export default function ProductCard({products}){
-    //const {cartItems, setCartItems} = useContext(StoreContext);
-    //console.log(cartItems)
+    const {cartItems, setCartItems} = useContext(StoreContext);
+    console.log(cartItems)
     
     const handleAddCart = (product) => {
-        //setCartItems([...cartItems, product])
-        alert("oi")
+        setCartItems([...cartItems, product])
         console.log(product)
     }
     return(<>{

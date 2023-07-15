@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import SignUpPage from "./pages/SignUpPage";
 import SignInPage from "./pages/SignInPage";
 import UserProvider from "./contexts/UserContext";
@@ -20,11 +20,15 @@ function App() {
             <Route path="/signUp" element={<SignUpPage />} />
             <Route path="/signIn" element={<SignInPage />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/categoria/perifericos" element={<Peripherals />}/>
-            <Route path="/categoria/games" element={<Games />}/>
-            <Route path="/categoria/hardware" element={< Hardware/>}/>
-            <Route path="/categoria/computadores" element={<Computers />}/>
-            <Route path="/categoria/celulares" element={<Cellphones />}/>
+            <Route path="/categoria/perifericos" element={<Peripherals />} />
+            <Route path="/categoria/games" element={<Games />} />
+            <Route path="/categoria/hardware" element={<Hardware />} />
+            <Route path="/categoria/computadores" element={<Computers />} />
+            <Route path="/categoria/celulares" element={<Cellphones />} />
+            <Route
+              path="/"
+              element={<Navigate to="/categoria/perifericos" replace />}
+            />
           </Routes>
         </StoreProvider>
       </UserProvider>
@@ -33,4 +37,3 @@ function App() {
 }
 
 export default App;
-

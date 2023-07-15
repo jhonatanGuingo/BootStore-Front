@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import { useNavigate, useLocation } from "react-router-dom";
 import { BiExit } from "react-icons/bi";
-import { BsSearch } from "react-icons/bs";
+import { BiSolidUserCircle } from "react-icons/bi";
 import { FiShoppingCart } from "react-icons/fi";
 import { BsChevronDown } from "react-icons/bs";
 
+import { StoreContext } from "../contexts/StoreContext";
+
 export default function Header() {
+  const {cartItems} = useContext(StoreContext);
   const location = useLocation();
   const [selectedItem, setSelectedItem] = useState("");
+  const [isLogged, setIsLogged] = useState(false);
 
   useEffect(() => {
     const currentPath = location.pathname.split("/")[2];
@@ -23,25 +27,26 @@ export default function Header() {
   const navigate = useNavigate();
   const handleItemClick = (item) => {
     if (item === selectedItem) {
-      setSelectedItem(null); // Deselecionar o item se já estiver selecionado
+      setSelectedItem(null);
     } else {
-      setSelectedItem(item); // Selecionar o novo item
-      // Deselecionar outros itens se houver algum selecionado
-      // Isso pode ser feito definindo o valor do estado `selectedItem` como `null`
-      // para todos os outros itens desejados. Por exemplo:
+      setSelectedItem(item);
       if (selectedItem === "perifericos" || selectedItem === "games") {
         setSelectedItem(null);
       }
     }
-    if( item=== "cart"){
+    if (item === "cart") {
       return navigate(`/cart`);
     }
     navigate(`/categoria/${item}`);
   };
+  
+  const login = () => {
+    navigate("/signIn")
+  }
 
   return (
     <>
-      <HeaderSC>
+      <HeaderSC logged={isLogged} cont={cartItems.length}>
         <h1>KATCHAU</h1>
         <span>
           <h3
@@ -76,14 +81,21 @@ export default function Header() {
           </h3>
         </span>
         <div>
-          <p
+          <span
             className={selectedItem === "cart" ? "selected" : ""}
             onClick={() => handleItemClick("cart")}
           >
             <FiShoppingCart />
-            <span>1</span>
-          </p>
-          <p><BsSearch /></p>
+            <h1>{cartItems.length}</h1>
+          </span>
+          <h2><BiSolidUserCircle/></h2>
+          <ul>
+            <li>
+              MINHA CONTA
+            </li>
+            <b onClick={login}>ENTRAR/CADASTRO</b>
+          </ul>
+          <h3>josaaao</h3>
           <p><BiExit /></p>
         </div>
       </HeaderSC>
@@ -131,16 +143,55 @@ const HeaderSC = styled.header`
   div {
     display: flex;
     justify-content: space-between;
-    width: 150px;
+    align-items: center;
+    width: 230px;
     font-size: 25px;
     margin-right: 300px;
+    h2 {
+      display: ${(props) => (props.logged ? "none" : "inline")};
+      margin-top: 7px;
+      margin-left: 40px;
+      font-size: 35px;
+    }
+    ul {
+      display: ${(props) => (props.logged ? "none" : "inline")};
+      font-family: roboto;
+      li {
+        position: relative;
+        top: 4px;
+        font-size: 10px;
+      }
+      b {
+        position: relative;
+        bottom: 3px;
+        font-size: 15px;
+        font-weight: 700;
+        &:hover {
+          color: #ff274b;
+          cursor: pointer;
+        }
+      }
+    }
     p {
+      display: ${(props) => (props.logged ? "inline" : "none")};
       cursor: pointer;
       &:hover {
         color: #a5a5a5;
       }
+    }
+    h3 {
+      display: ${(props) => (props.logged ? "inline" : "none")};
+      margin-left: 90px;
+      margin-bottom: 2px;
+      font-size: 30px;
+    }
+    span {
+      cursor: pointer;
+      &:hover {
+        color: #ff274b;
+      }
       position: relative;
-      span{
+      h1 {
         background-color: #000000;
         width: 15px;
         height: 15px;
@@ -151,7 +202,7 @@ const HeaderSC = styled.header`
         font-family: Roboto;
         font-size: 11px;
         border-radius: 15px;
-        display: flex;
+        display: ${(props) => (props.cont==0 ? "none" : "flex")};
         justify-content: center;
         align-items: center;
       }

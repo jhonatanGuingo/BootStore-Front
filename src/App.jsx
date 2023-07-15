@@ -2,10 +2,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUpPage from "./pages/SignUpPage";
 import SignInPage from "./pages/SignInPage";
 import UserProvider from "./contexts/UserContext";
-import HomePage from "./pages/HomePage"
+import HomePage from "./pages/Peripherals"
 import Cart from "./pages/Cart"
 import Peripherals from "./pages/Peripherals"
-
 
 function App() {
   return (

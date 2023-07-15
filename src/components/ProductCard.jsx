@@ -1,6 +1,16 @@
 import styled from "styled-components"
+//import { useState, useContext } from "react"
+//import { StoreContext } from "../contexts/StoreContext";
 
 export default function ProductCard({products}){
+    //const {cartItems, setCartItems} = useContext(StoreContext);
+    //console.log(cartItems)
+    
+    const handleAddCart = (product) => {
+        //setCartItems([...cartItems, product])
+        alert("oi")
+        console.log(product)
+    }
     return(<>{
         products.map((product, id) => (
         <ProductCardSC key={id}>
@@ -14,7 +24,7 @@ export default function ProductCard({products}){
                     currency: "BRL",
                 })}</span>
             </div>
-            <button>Adicionar ao carrinho</button>
+            <button onClick={() => handleAddCart(product)}>Adicionar ao carrinho</button>
         </ProductCardSC>
         ))
     }</>)

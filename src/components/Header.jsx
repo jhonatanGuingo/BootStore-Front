@@ -13,14 +13,29 @@ export default function Header() {
   useEffect(() => {
     const currentPath = location.pathname.split("/")[2];
     setSelectedItem(currentPath || "perifericos");
+  
+    if (location.pathname === "/cart") {
+      setSelectedItem("cart");
+    }
   }, [location]);
+  
 
   const navigate = useNavigate();
   const handleItemClick = (item) => {
     if (item === selectedItem) {
-      return;
+      setSelectedItem(null); // Deselecionar o item se já estiver selecionado
+    } else {
+      setSelectedItem(item); // Selecionar o novo item
+      // Deselecionar outros itens se houver algum selecionado
+      // Isso pode ser feito definindo o valor do estado `selectedItem` como `null`
+      // para todos os outros itens desejados. Por exemplo:
+      if (selectedItem === "perifericos" || selectedItem === "games") {
+        setSelectedItem(null);
+      }
     }
-    setSelectedItem(item);
+    if( item=== "cart"){
+      return navigate(`/cart`);
+    }
     navigate(`/categoria/${item}`);
   };
 
@@ -61,7 +76,13 @@ export default function Header() {
           </h3>
         </span>
         <div>
-          <p><FiShoppingCart /></p>
+          <p
+            className={selectedItem === "cart" ? "selected" : ""}
+            onClick={() => handleItemClick("cart")}
+          >
+            <FiShoppingCart />
+            <span>1</span>
+          </p>
           <p><BsSearch /></p>
           <p><BiExit /></p>
         </div>
@@ -117,6 +138,22 @@ const HeaderSC = styled.header`
       cursor: pointer;
       &:hover {
         color: #a5a5a5;
+      }
+      position: relative;
+      span{
+        background-color: #000000;
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        color: white;
+        font-family: Roboto;
+        font-size: 11px;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
   }

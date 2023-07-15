@@ -8,22 +8,25 @@ import Games from "./pages/Games";
 import Hardware from "./pages/Hardware";
 import Computers from "./pages/Computers";
 import Cellphones from "./pages/Cellphones";
+import { StoreProvider } from "./contexts/StoreContext";
 
 
 function App() {
   return (
     <BrowserRouter>
       <UserProvider>
-        <Routes>
-          <Route path="/signUp" element={<SignUpPage />} />
-          <Route path="/signIn" element={<SignInPage />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/categoria/perifericos" element={<Peripherals />}/>
-          <Route path="/categoria/games" element={<Games />}/>
-          <Route path="/categoria/hardware" element={< Hardware/>}/>
-          <Route path="/categoria/computadores" element={<Computers />}/>
-          <Route path="/categoria/celulares" element={<Cellphones />}/>
-        </Routes>
+        <StoreProvider>
+          <Routes>
+            <Route path="/signUp" element={<SignUpPage />} />
+            <Route path="/signIn" element={<SignInPage />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/categoria/perifericos" element={<Peripherals />}/>
+            <Route path="/categoria/games" element={<Games />}/>
+            <Route path="/categoria/hardware" element={< Hardware/>}/>
+            <Route path="/categoria/computadores" element={<Computers />}/>
+            <Route path="/categoria/celulares" element={<Cellphones />}/>
+          </Routes>
+        </StoreProvider>
       </UserProvider>
     </BrowserRouter>
   );

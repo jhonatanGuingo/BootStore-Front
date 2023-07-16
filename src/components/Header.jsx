@@ -52,7 +52,7 @@ export default function Header() {
   };
   
   const login = () => {
-    navigate("/signIn")
+    navigate("/signUp")
   }
 
   function Logout() {

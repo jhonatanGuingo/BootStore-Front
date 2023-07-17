@@ -2,9 +2,75 @@ import styled from "styled-components"
 import Header from "./../components/Header"
 import { CiCircleRemove } from "react-icons/ci"
 import { Link } from "react-router-dom"
+import Footer from "../components/Footer"
+import { StoreContext } from "../contexts/StoreContext"
+import { useState, useContext, useEffect } from "react"
+import axios from "axios"
+
+
+const formatCurrentInBRL = (valor) => {
+    return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+}
+
+const handlerValidateCode = (code, setDiscount, setActived, setTextActived) => {
+    const promisse = axios.post(`${import.meta.env.VITE_API_URL}/discount`, { value: code })
+    promisse.then(res => {
+        setDiscount(res.data.value)
+        setActived(true)
+        setTextActived("Código resgatado com sucesso")
+    })
+    promisse.catch(res => {
+        setDiscount(10)
+        setActived(false)
+        setTextActived("Código inválido")
+    })
+}
+
+function ProductsList({ product, button }) {
+    return (
+        <li>
+            <CiCircleRemove
+                onClick={button} 
+                cursor="pointer" 
+                fontSize={20} 
+            />
+            <img src={product.image} />
+            <span className="title-product">{product.title}</span>
+            <span className="price-product">{formatCurrentInBRL(product.price)}</span>
+        </li>
+    )
+}
 
 function Cart() {
-    
+    const [ actived, setActived ] = useState(false)
+    const [ textActived, setTextActived ] = useState("Insira seu código de cumpom e depois clicke em 'submit'")
+    const { cartItems, setCartItems } = useContext(StoreContext)
+    const [subtotal, setSubtotal] = useState(0)
+    const [discount, setDiscount] = useState(0)
+    const [total, setTotal] = useState(0)
+    const [code, setCode] = useState("")
+
+    useEffect(() => {
+        const prices = cartItems.map(item => item.price)
+        let sum = 0
+        for ( let i in prices) {
+            sum += prices[i]
+        }
+        setSubtotal(sum)
+
+        let discountInValue = sum - discount
+
+        setTotal(discountInValue)
+
+    }, [cartItems])
+
+    const handlerRemoveItem = (id) => {
+        const cartItemsNew = [...cartItems]
+        const getindex = cartItemsNew.findIndex(item => item.title === id)
+        
+        cartItemsNew.splice(getindex, 1)
+        setCartItems(cartItemsNew)
+    }
 
     return (
         <>
@@ -17,35 +83,46 @@ function Cart() {
                     <Products>
                         <h3>Produtos</h3>
                         <ul>
-                            <li>
-                                <CiCircleRemove cursor="pointer" fontSize={20} />
-                                <img src="https://s2-techtudo.glbimg.com/b3v-mCTmam09F1C0Wjsau93UiyY=/0x0:695x444/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/3/f/fjBhJkS0WABWAvB4MHzw/2015-10-23-video.png" />
-                                <span className="title-product">pc gamer nã é por</span>
-                                <span className="price-product">R$24</span>
-                            </li>
+                            {cartItems? 
+                            (cartItems.map((product, index) => 
+                            <ProductsList
+                                button={() => handlerRemoveItem(product.title)}
+                                id={product.title}
+                                product={product} 
+                                key={index} />
+                            )):
+                            ("Nenhum produto adicionado")
+                            } 
                         </ul>
                         <Discount >
                             <h3>Desconto</h3>
-                            <p>Após terminar clicke em "submit"</p>
+                            <p>{textActived}</p>
                             <div>
-                                <input 
-                                    type="text" placeholder="Cupom"
+                                <input
+                                    disabled={actived}
+                                    type="text" 
+                                    placeholder="Cupom"
+                                    onChange={(e) => setCode(e.target.value)}
+                                    value={code}
                                 />
-                                <button className="discount-button">Enviar</button>
+                                <button 
+                                    className="discount-button"
+                                    onClick={() => handlerValidateCode(code, setDiscount, setActived, setTextActived)}
+                                >Enviar</button>
                             </div>
                         </Discount>
                     </Products>
-                
+
                     <DeatailsInfo>
                         <div className="cart-info">
                             <span className="title-cart">Total do Carrinho</span>
                             <hr />
-                            <span className="subtotal-cart">R$500</span>
+                            <span className="subtotal-cart">{formatCurrentInBRL(subtotal)}</span>
                             <hr />
                             <span className="title-cart">Adicional:</span>
                             <hr />
-                            <span className="discount-cart">Desconto: $0</span>
-                            <span className="total-cart">R$500</span>
+                            <span className="discount-cart">Desconto: {formatCurrentInBRL(discount)}</span>
+                            <span className="total-cart">{formatCurrentInBRL(total)}</span>
                         </div>
 
                         <div className="button-info" >
@@ -55,7 +132,7 @@ function Cart() {
                                 </Link>
                             </button>
                             <button className="back">
-                                <Link to="/home">
+                                <Link to="/categoria/perifericos">
                                     Continue Comprando
                                 </Link>
                             </button>
@@ -64,6 +141,7 @@ function Cart() {
 
                 </Info>
             </Container>
+            <Footer />
         </>
     )
 }
@@ -73,7 +151,7 @@ export default Cart
 const Container = styled.main`
     width: 100%;
     height: 100vh;
-    overflow-x: hidden;
+    overflow-y: hidden;
 `
 
 const Discount = styled.section`
@@ -146,6 +224,7 @@ const Info = styled.section`
 `
 
 const Products = styled.article`
+    margin-bottom: 12rem;
     .title-product {
         font-size: 1.25rem;
         font-weight: 700;
@@ -206,7 +285,7 @@ const DeatailsInfo = styled.article`
             
             &::before {
                 content: "Subtotal:";
-                margin-right: 16.5rem;
+                margin-right: 13.5rem;
                 color: gray;
             }
         }
@@ -227,7 +306,7 @@ const DeatailsInfo = styled.article`
                 font-size: 1.25rem;
                 font-weight: 700;
                 text-transform: uppercase;
-                margin-right: 16.5rem;
+                margin-right: 13.5rem;
             }
         }
 

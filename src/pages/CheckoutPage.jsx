@@ -373,6 +373,7 @@ const HorizontalSeparator = styled.div`
 
 const DeatailsInfo = styled.article`
     .cart-info {
+        font-family: 'Roboto';
         width: 100%;
         height: 80%;
         display: flex;
@@ -381,6 +382,7 @@ const DeatailsInfo = styled.article`
         background-color: #252525;
 
         .title-cart {
+            font-family: 'Roboto';
             font-size: 1.25rem;
             color: white;
             font-weight: 700;
@@ -391,33 +393,37 @@ const DeatailsInfo = styled.article`
         }
 
         .subtotal-cart {
+            font-family: 'Roboto';
             font-weight: 700;
             color: white;
 
             &::before {
                 content: 'Subtotal:';
-                margin-right: 10rem;
+                margin-right: 11.5rem;
                 color: gray;
             }
         }
 
         .discount-cart {
+            font-family: 'Roboto';
             font-weight: 700;
             color: gray;
         }
 
         .total-cart {
+            font-family: 'Roboto';
             color: white;
             font-weight: 700;
             text-transform: uppercase;
-            margin-top: auto;
+            margin-top: 60px;
 
             &::before {
+                font-family: 'Roboto';
                 content: 'Total:';
                 font-size: 1.25rem;
                 font-weight: 700;
                 text-transform: uppercase;
-                margin-right: 9.38rem;
+                margin-right: 11.4rem;
             }
         }
 
@@ -434,5 +440,4 @@ const DeatailsInfo = styled.article`
         color: inherit;
         text-decoration: none;
     }
-
 `;

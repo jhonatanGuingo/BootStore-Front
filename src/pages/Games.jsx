@@ -7,6 +7,8 @@ import { useContext, useEffect, useState } from "react";
 import { StoreContext } from "../contexts/StoreContext";
 import Loading from "../components/Loading";
 
+axios.defaults.baseURL = `${import.meta.env.VITE_API_URL}`;
+
 export default function Peripherals() {
     const [loading, setLoading] = useState(true)
     const {games, setGames} = useContext(StoreContext)

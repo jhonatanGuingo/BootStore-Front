@@ -5,7 +5,7 @@ import { BiExit } from "react-icons/bi";
 import { BiSolidUserCircle } from "react-icons/bi";
 import { FiShoppingCart } from "react-icons/fi";
 import { BsChevronDown } from "react-icons/bs";
-
+import { UserContext } from "../contexts/UserContext";
 import { StoreContext } from "../contexts/StoreContext";
 
 export default function Header() {
@@ -13,8 +13,19 @@ export default function Header() {
   const location = useLocation();
   const [selectedItem, setSelectedItem] = useState("");
   const [isLogged, setIsLogged] = useState(false);
+  const {user, setUser} = useContext(UserContext);
 
   useEffect(() => {
+    //login
+    console.log(user);
+    if (user && user.token && user.name && user.userId) {
+    
+   
+      setIsLogged(true);
+        } else {
+          setIsLogged(false);
+        }
+    //
     const currentPath = location.pathname.split("/")[2];
     setSelectedItem(currentPath || "perifericos");
   
@@ -41,9 +52,17 @@ export default function Header() {
   };
   
   const login = () => {
-    navigate("/signIn")
+    navigate("/signUp")
   }
 
+  function Logout() {
+    localStorage.removeItem("user");
+    setUser({})
+    setIsLogged(false)
+    navigate("/");
+  }
+ console.log(isLogged, "final")
+ console.log(user, "user")
   return (
     <>
       <HeaderSC logged={isLogged} cont={cartItems.length}>
@@ -95,8 +114,8 @@ export default function Header() {
             </li>
             <b onClick={login}>ENTRAR/CADASTRO</b>
           </ul>
-          <h3>josaaao</h3>
-          <p><BiExit /></p>
+          <h3>{user.name}</h3>
+          <p onClick={Logout}><BiExit /></p>
         </div>
       </HeaderSC>
     </>
@@ -176,7 +195,7 @@ const HeaderSC = styled.header`
       display: ${(props) => (props.logged ? "inline" : "none")};
       cursor: pointer;
       &:hover {
-        color: #a5a5a5;
+        color: #ff274b;
       }
     }
     h3 {

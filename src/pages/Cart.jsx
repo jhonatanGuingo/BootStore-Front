@@ -81,6 +81,7 @@ function Cart() {
                 </Bar>
                 <Info>
                     <Products>
+
                         <h3>Produtos</h3>
                         <ul>
                             {cartItems? 
@@ -97,6 +98,7 @@ function Cart() {
                         <Discount >
                             <h3>Desconto</h3>
                             <p>{textActived}</p>
+
                             <div>
                                 <input
                                     disabled={actived}
@@ -115,6 +117,7 @@ function Cart() {
 
                     <DeatailsInfo>
                         <div className="cart-info">
+
                             <span className="title-cart">Total do Carrinho</span>
                             <hr />
                             <span className="subtotal-cart">{formatCurrentInBRL(subtotal)}</span>
@@ -123,17 +126,20 @@ function Cart() {
                             <hr />
                             <span className="discount-cart">Desconto: {formatCurrentInBRL(discount)}</span>
                             <span className="total-cart">{formatCurrentInBRL(total)}</span>
+
                         </div>
 
                         <div className="button-info" >
                             <button className="checkout">
                                 <Link to="/checkout">
+
                                     Finalizar a compra
                                 </Link>
                             </button>
                             <button className="back">
                                 <Link to="/categoria/perifericos">
                                     Continue Comprando
+
                                 </Link>
                             </button>
                         </div>

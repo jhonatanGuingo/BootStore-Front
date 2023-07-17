@@ -58,8 +58,8 @@ export const games = [
     },
     {
         image: "https://images.kabum.com.br/produtos/fotos/128560/console-microsoft-xbox-series-x-1tb-preto-rrt-00006_1601067024_gg.jpg",
-        company: "Console",
-        title: "Microsoft Xbox Series X",
+        company: "Microsoft Xbox Series X",
+        title: "Console",
         price: 4799.99
     },
     {

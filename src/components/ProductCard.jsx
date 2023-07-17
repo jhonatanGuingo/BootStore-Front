@@ -75,7 +75,10 @@ const ProductCardSC = styled.div`
         padding: 10px 0px;
         width: 150px;
         font-weight: 400;
-        cursor: pointer;
+        &:hover {
+          background-color: #ff274b;
+          cursor: pointer;
+        }
         margin-bottom: 20px;
     }
 `

@@ -1,32 +1,31 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Products from "../components/Products";
-//import { peripherals } from "../data/products";
+//import { cellphones } from "../data/products";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { StoreContext } from "../contexts/StoreContext";
 import Loading from "../components/Loading";
 axios.defaults.baseURL = `${import.meta.env.VITE_API_URL}`;
-
 export default function Peripherals() {
     const [loading, setLoading] = useState(true)
-    const {peripherals, setPeripherals} = useContext(StoreContext)
+    const {cellphones, setCellphones} = useContext(StoreContext)
     
     useEffect(() => {
-        const promise = axios.get("/peripherals")
+        const promise = axios.get("/cellphones")
         promise.then((answer) => {
         console.log(answer.data)
-         setPeripherals(answer.data);
-         console.log(peripherals);
+         setCellphones(answer.data);
+         console.log(cellphones);
          setLoading(false);
     })
     }, [])
+
     return(
         (loading ? <Loading/> : <>
         <Header/>
-        <Products products={peripherals}/>
+        <Products products={cellphones}/>
         <Footer/>
     </>)
     )
 }
-

@@ -1,61 +1,19 @@
 import styled from "styled-components"
+import { useState, useContext } from "react"
+import { StoreContext } from "../contexts/StoreContext";
 
-export default function ProductCard(){
-    const data = [
-        {
-            _id: 0,
-            company: "empresa",
-            title: "titulo",
-            price: 100
-        },
-        {
-            _id: 0,
-            company: "empresa",
-            title: "titulo",
-            price: 100
-        },
-        {
-            _id: 0,
-            company: "empresa",
-            title: "titulo",
-            price: 100
-        },
-        {
-            _id: 0,
-            company: "empresa",
-            title: "titulo",
-            price: 100
-        },
-        {
-            _id: 0,
-            company: "empresa",
-            title: "titulo",
-            price: 100
-        },
-        {
-            _id: 0,
-            company: "empresa",
-            title: "titulo",
-            price: 100
-        },
-        {
-            _id: 0,
-            company: "empresa",
-            title: "titulo",
-            price: 100
-        },
-        {
-            _id: 0,
-            company: "empresa",
-            title: "titulo",
-            price: 100
-        }
-    ]
-
+export default function ProductCard({products}){
+    const {cartItems, setCartItems} = useContext(StoreContext);
+    console.log(cartItems)
+    
+    const handleAddCart = (product) => {
+        setCartItems([...cartItems, product])
+        console.log(product)
+    }
     return(<>{
-        data.map((product, id) => (
+        products.map((product, id) => (
         <ProductCardSC key={id}>
-            <img src="https://images.kabum.com.br/produtos/fotos/147962/headset-gamer-hyperx-cloud-blue-ps4-hhsc2-fa-bl-n_1613658279_gg.jpg" 
+            <img src={product.image} 
             alt="product"/>
             <div>
                 <h2>{product.company}</h2>
@@ -65,14 +23,14 @@ export default function ProductCard(){
                     currency: "BRL",
                 })}</span>
             </div>
-            <button>Adicionar ao carrinho</button>
+            <button onClick={() => handleAddCart(product)}>Adicionar ao carrinho</button>
         </ProductCardSC>
         ))
     }</>)
 }
 
 const ProductCardSC = styled.div`
-
+    padding-top: 20px;
     margin-bottom: 30px;
     width: 300px;
     display: flex;
@@ -105,7 +63,7 @@ const ProductCardSC = styled.div`
         span{
             font-family: Bebas Neue;
             margin-bottom: 20px;
-            color:  #ff002b;
+            color: #ff274b;
             font-size: 22px;
         }
     }
@@ -117,7 +75,10 @@ const ProductCardSC = styled.div`
         padding: 10px 0px;
         width: 150px;
         font-weight: 400;
-        cursor: pointer;
+        &:hover {
+          background-color: #ff274b;
+          cursor: pointer;
+        }
         margin-bottom: 20px;
     }
 `

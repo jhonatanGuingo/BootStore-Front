@@ -20,7 +20,7 @@ const handlerValidateCode = (code, setDiscount, setActived, setTextActived) => {
         setTextActived("Código resgatado com sucesso")
     })
     promisse.catch(res => {
-        setDiscount(10)
+        setDiscount(0)
         setActived(false)
         setTextActived("Código inválido")
     })

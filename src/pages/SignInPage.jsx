@@ -25,8 +25,7 @@ export default function SignInPage() {
       const { userId, name, token } = res.data;
       setUser({ userId, name, token });
       localStorage.setItem("user", JSON.stringify({ userId, name, token }));
-      alert("logado com sucesso");
-      navigate("/");
+      navigate("/")
     });
 
     promise.catch((err) => {

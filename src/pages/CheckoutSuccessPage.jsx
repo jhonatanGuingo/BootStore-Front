@@ -15,9 +15,9 @@ export default function CheckoutSuccessPage() {
             <Header></Header>
             <ContentContainer>
                 <MessageContainer>
-                    <PurchaseMessage>THANKS FOR YOUR ORDER!</PurchaseMessage>
-                    <PurchaseMessageSmall>Your order is accepted. The manager will contact you shortly.</PurchaseMessageSmall>
-                    <SubmitButton onClick={exitPage}>Go to shop</SubmitButton>
+                    <PurchaseMessage>OBRIGADO PELA PREFERÊNCIA</PurchaseMessage>
+                    <PurchaseMessageSmall>Seu pedido foi aceito. Iremos lhe contatar em breve.</PurchaseMessageSmall>
+                    <SubmitButton onClick={exitPage}>Ir a compras</SubmitButton>
                 </MessageContainer>
             </ContentContainer>
             <Footer></Footer>

@@ -7,7 +7,7 @@ export default function CheckoutSuccessPage() {
     const navigate = useNavigate();
 
     function exitPage() {
-        navigate('/perifericos');
+        navigate('/categoria/perifericos');
     }
 
     return (

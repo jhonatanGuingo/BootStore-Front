@@ -137,7 +137,20 @@ export default function CheckoutPage() {
                         </InputSection>
                     </InputContainer>
                     <OrderReview>
-                        <ReviewSection></ReviewSection>
+                        <ReviewSection>
+                            <DeatailsInfo>
+                                <div className="cart-info">
+                                    <span className="title-cart">Cart Totals</span>
+                                    <hr />
+                                    <span className="subtotal-cart">$500</span>
+                                    <hr />
+                                    <span className="title-cart">Additional:</span>
+                                    <hr />
+                                    <span className="discount-cart">Discount: $0</span>
+                                    <span className="total-cart">$500</span>
+                                </div>
+                            </DeatailsInfo>
+                        </ReviewSection>
                         <ReviewSection>
                             <ShipmentContainer>
                                 <ShipmentInput
@@ -356,4 +369,70 @@ const ReviewSection = styled.div`
 const HorizontalSeparator = styled.div`
     height: 100px;
     width: 100%;
+`;
+
+const DeatailsInfo = styled.article`
+    .cart-info {
+        width: 100%;
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        text-align: justify;
+        background-color: #252525;
+
+        .title-cart {
+            font-size: 1.25rem;
+            color: white;
+            font-weight: 700;
+            text-transform: uppercase;
+            width: 300px;
+            word-break: break-all;
+            word-spacing: 0.7rem;
+        }
+
+        .subtotal-cart {
+            font-weight: 700;
+            color: white;
+
+            &::before {
+                content: 'Subtotal:';
+                margin-right: 10rem;
+                color: gray;
+            }
+        }
+
+        .discount-cart {
+            font-weight: 700;
+            color: gray;
+        }
+
+        .total-cart {
+            color: white;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: auto;
+
+            &::before {
+                content: 'Total:';
+                font-size: 1.25rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                margin-right: 9.38rem;
+            }
+        }
+
+        hr {
+            width: 100%;
+            border-color: #252525;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    a {
+        display: block;
+        color: inherit;
+        text-decoration: none;
+    }
+
 `;

@@ -63,19 +63,19 @@ export default function CheckoutPage() {
             <Header />
             <ContentContainer>
                 <TitleSection>
-                    <Title>BILLING DETAILS</Title>
+                    <Title>Dados pessoais</Title>
                 </TitleSection>
                 <BillingContainer onSubmit={checkoutItem}>
                     <InputContainer>
                         <InputSection>
                             <InputHalf
-                                placeholder="First Name"
+                                placeholder="Nome"
                                 type="text"
                                 required
                                 value={firstname}
                                 onChange={(e) => setFirstname(e.target.value)}></InputHalf>
                             <InputHalf
-                                placeholder="Last Name"
+                                placeholder="Sobrenome"
                                 type="text"
                                 required
                                 value={surname}
@@ -89,7 +89,7 @@ export default function CheckoutPage() {
                                 value={company}
                                 onChange={(e) => setCompany(e.target.value)}></InputHalf>
                             <InputHalf
-                                placeholder="Country"
+                                placeholder="País"
                                 type="text"
                                 required
                                 value={country}
@@ -97,7 +97,7 @@ export default function CheckoutPage() {
                         </InputSection>
                         <InputSection>
                             <InputFull
-                                placeholder="City"
+                                placeholder="Cidade"
                                 type="text"
                                 required
                                 value={city}
@@ -105,7 +105,7 @@ export default function CheckoutPage() {
                         </InputSection>
                         <InputSection>
                             <InputFull
-                                placeholder="Address"
+                                placeholder="Endereço"
                                 type="text"
                                 required
                                 value={address}
@@ -113,7 +113,7 @@ export default function CheckoutPage() {
                         </InputSection>
                         <InputSection>
                             <InputFull
-                                placeholder="Phone Number"
+                                placeholder="Telefone"
                                 type="number"
                                 required
                                 value={phone}
@@ -129,7 +129,7 @@ export default function CheckoutPage() {
                         </InputSection>
                         <InputSection>
                             <InputHalf
-                                placeholder="Zip-code / Post-code"
+                                placeholder="CEP"
                                 type="number"
                                 required
                                 value={zipcode}
@@ -140,14 +140,14 @@ export default function CheckoutPage() {
                         <ReviewSection>
                             <DeatailsInfo>
                                 <div className="cart-info">
-                                    <span className="title-cart">Cart Totals</span>
+                                    <span className="title-cart">Resumo da compra</span>
                                     <hr />
-                                    <span className="subtotal-cart">$500</span>
+                                    <span className="subtotal-cart">R$500</span>
                                     <hr />
-                                    <span className="title-cart">Additional:</span>
+                                    <span className="title-cart">Cupom:</span>
                                     <hr />
-                                    <span className="discount-cart">Discount: $0</span>
-                                    <span className="total-cart">$500</span>
+                                    <span className="discount-cart">Desconto: R$0</span>
+                                    <span className="total-cart">R$500</span>
                                 </div>
                             </DeatailsInfo>
                         </ReviewSection>
@@ -159,7 +159,7 @@ export default function CheckoutPage() {
                                     checked={payment === 'cash'}
                                     onChange={handleCheckboxChange}
                                     onClick={handleCheckboxClick}></ShipmentInput>
-                                <ShipmentInfo>CASH ON DELIVERY</ShipmentInfo>
+                                <ShipmentInfo>CARTÃO</ShipmentInfo>
                             </ShipmentContainer>
                             <ShipmentContainer>
                                 <ShipmentInput
@@ -168,7 +168,7 @@ export default function CheckoutPage() {
                                     checked={payment === 'check'}
                                     onChange={handleCheckboxChange}
                                     onClick={handleCheckboxClick}></ShipmentInput>
-                                <ShipmentInfo>CHECK PAYMENT</ShipmentInfo>
+                                <ShipmentInfo>BOLETO</ShipmentInfo>
                             </ShipmentContainer>
                             <ShipmentContainer>
                                 <ShipmentInput
@@ -177,13 +177,13 @@ export default function CheckoutPage() {
                                     checked={payment === 'transfer'}
                                     onChange={handleCheckboxChange}
                                     onClick={handleCheckboxClick}></ShipmentInput>
-                                <ShipmentInfo>DIRECT BANK TRANSFER</ShipmentInfo>
+                                <ShipmentInfo>PIX</ShipmentInfo>
                             </ShipmentContainer>
                         </ReviewSection>
                         <SubmitButton
                             type="submit"
                             placeholder="Submit">
-                            Place Order
+                            Finalizar Pedido
                         </SubmitButton>
                     </OrderReview>
                 </BillingContainer>

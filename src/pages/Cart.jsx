@@ -12,21 +12,21 @@ function Cart() {
             <Header />
             <Container >
                 <Bar >
-                    <h2>Shopping Cart</h2>
+                    <h2>Carrinho</h2>
                 </Bar>
                 <Info>
                     <Products>
-                        <h3>Product</h3>
+                        <h3>Produto</h3>
                         <ul>
                             <li>
                                 <CiCircleRemove cursor="pointer" fontSize={20} />
                                 <img src="https://s2-techtudo.glbimg.com/b3v-mCTmam09F1C0Wjsau93UiyY=/0x0:695x444/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/3/f/fjBhJkS0WABWAvB4MHzw/2015-10-23-video.png" />
                                 <span className="title-product">pc gamer nã é por</span>
-                                <span className="price-product">$24</span>
+                                <span className="price-product">R$24</span>
                             </li>
                         </ul>
                         <Discount >
-                            <h3>Discount</h3>
+                            <h3>Cupom</h3>
                             <p>Apos terminar clicke em submit button</p>
                             <div>
                                 <input type="text" placeholder="Cupom"/>
@@ -37,25 +37,25 @@ function Cart() {
                 
                     <DeatailsInfo>
                         <div className="cart-info">
-                            <span className="title-cart">Cart Totals</span>
+                            <span className="title-cart">Resumo da Compra</span>
                             <hr />
-                            <span className="subtotal-cart">$500</span>
+                            <span className="subtotal-cart">R$500</span>
                             <hr />
-                            <span className="title-cart">Additional:</span>
+                            <span className="title-cart">Cupom:</span>
                             <hr />
-                            <span className="discount-cart">Discount: $0</span>
-                            <span className="total-cart">$500</span>
+                            <span className="discount-cart">Discount: R$0</span>
+                            <span className="total-cart">R$500</span>
                         </div>
 
                         <div className="button-info" >
                             <button className="checkout">
                                 <Link to="/checkout">
-                                    Proceed to checkout
+                                    Finalizar compra
                                 </Link>
                             </button>
                             <button className="back">
-                                <Link to="/home">
-                                    Continue Shopping
+                                <Link to="/">
+                                    Continue comprando
                                 </Link>
                             </button>
                         </div>

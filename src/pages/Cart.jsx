@@ -13,7 +13,7 @@ const formatCurrentInBRL = (valor) => {
 }
 
 const handlerValidateCode = (code, setDiscount, setActived, setTextActived) => {
-    const promisse = axios.post(`${import.meta.env.VITE_API_URL}/discount`, { value: code })
+    const promisse = axios.post(`${import.meta.env.VITE_API_URL}/discount`, { code: code })
     promisse.then(res => {
         setDiscount(res.data.value)
         setActived(true)

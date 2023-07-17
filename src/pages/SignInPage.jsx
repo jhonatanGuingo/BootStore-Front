@@ -99,22 +99,21 @@ const SignInContainer = styled.div`
     border-radius: 5px;
   }
   button {
-    
+    font-family: Bebas Neue;
     outline: none;
     border: none;
     width: calc(100% - 80%);
     border-radius: 5px;
     background-color: white;
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 25px;
     color: black;
     cursor: pointer;
 
     padding: 12px;
   }
   a {
-    font-weight: 700;
-    font-size: 15px;
+    font-family: Bebas Neue;
+    font-size: 20px;
     line-height: 18px;
     color: black;
     text-decoration: none;
